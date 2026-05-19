@@ -948,13 +948,13 @@ function showQuizResult() {
   const score = quizAnswers.filter(Boolean).length;
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
-  const shareText = `Copilot進化クイズの結果: ${score}/${QUIZ_LENGTH} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦`;
-  const copyText = `${shareText}\n${pageUrl}\n#CopilotChan #GitHubCopilot`;
+  const shareText = `Copilot進化クイズの結果: ${score}/${QUIZ_LENGTH} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\nCopilotの進化を追う年表サイトで挑戦`;
+  const copyText = `${shareText}\n${pageUrl}\n#Copilot #GitHubCopilot`;
   const encodedText = encodeURIComponent(copyText);
   const webIntentParams = new URLSearchParams({
     text: shareText,
     url: pageUrl,
-    hashtags: "CopilotChan,GitHubCopilot"
+    hashtags: "Copilot,GitHubCopilot"
   });
   const shareUrl = `https://twitter.com/intent/tweet?${webIntentParams.toString()}`;
   const xFallbackUrl = `https://x.com/intent/tweet?${webIntentParams.toString()}`;

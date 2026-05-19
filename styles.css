@@ -1,15 +1,17 @@
 :root {
-  --bg: #080b0f;
-  --panel: rgba(18, 24, 31, 0.76);
-  --panel-strong: #111821;
-  --line: rgba(184, 221, 211, 0.18);
-  --text: #f3f7f4;
-  --muted: #9babaa;
-  --accent: #48d597;
-  --accent-2: #79c6ff;
-  --warm: #f5c36c;
+  --bg: #05070a;
+  --panel: rgba(10, 15, 22, 0.82);
+  --panel-strong: #0b1118;
+  --line: rgba(116, 236, 203, 0.2);
+  --text: #f5fff9;
+  --muted: #9bb2ad;
+  --accent: #2df6a3;
+  --accent-2: #58a6ff;
+  --accent-3: #a371f7;
+  --warm: #ffd166;
   --danger: #ff8f8f;
-  --shadow: rgba(0, 0, 0, 0.36);
+  --shadow: rgba(0, 0, 0, 0.44);
+  --code-grid: rgba(88, 166, 255, 0.08);
 }
 
 * {
@@ -23,9 +25,13 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 82% 12%, rgba(72, 213, 151, 0.18), transparent 26rem),
-    radial-gradient(circle at 6% 42%, rgba(121, 198, 255, 0.13), transparent 24rem),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 82% 12%, rgba(45, 246, 163, 0.18), transparent 26rem),
+    radial-gradient(circle at 14% 40%, rgba(88, 166, 255, 0.16), transparent 26rem),
+    radial-gradient(circle at 78% 74%, rgba(163, 113, 247, 0.1), transparent 24rem),
     var(--bg);
+  background-size: 44px 44px, 44px 44px, auto, auto, auto, auto;
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0;
@@ -47,7 +53,8 @@ a {
   display: block;
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--warm));
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  box-shadow: 0 0 20px rgba(45, 246, 163, 0.48);
 }
 
 .hero {
@@ -62,7 +69,8 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(8, 11, 15, 0.96), rgba(8, 11, 15, 0.72) 46%, rgba(8, 11, 15, 0.34)),
+    linear-gradient(90deg, rgba(5, 7, 10, 0.98), rgba(5, 7, 10, 0.78) 46%, rgba(5, 7, 10, 0.3)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 7px),
     linear-gradient(0deg, var(--bg), transparent 36%);
   pointer-events: none;
 }
@@ -94,6 +102,8 @@ a {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 18px rgba(45, 246, 163, 0.36);
 }
 
 .nav__links {
@@ -109,7 +119,8 @@ footer a {
   color: var(--muted);
   text-decoration: none;
   font-size: 13px;
-  background: rgba(8, 11, 15, 0.44);
+  background: rgba(5, 7, 10, 0.56);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .hero__content {
@@ -143,6 +154,7 @@ h1 {
   font-size: clamp(54px, 8.5vw, 118px);
   line-height: 0.96;
   letter-spacing: 0;
+  text-shadow: 0 0 38px rgba(88, 166, 255, 0.22);
 }
 
 .hero__lead {
@@ -168,9 +180,10 @@ h1 {
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(8, 11, 15, 0.62);
+  background: rgba(5, 7, 10, 0.72);
   color: #dce8e4;
   backdrop-filter: blur(14px);
+  box-shadow: inset 0 -1px 0 rgba(45, 246, 163, 0.12);
 }
 
 .hero__stats strong {
@@ -216,7 +229,10 @@ main {
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  background:
+    linear-gradient(180deg, rgba(45, 246, 163, 0.07), rgba(255, 255, 255, 0.02)),
+    linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.05));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .era-map span {
@@ -263,7 +279,8 @@ main {
   bottom: 0;
   left: calc(min(38vw, 450px) - 42px);
   width: 1px;
-  background: linear-gradient(180deg, transparent, var(--accent), var(--accent-2), transparent);
+  background: linear-gradient(180deg, transparent, var(--accent), var(--accent-2), var(--accent-3), transparent);
+  box-shadow: 0 0 22px rgba(45, 246, 163, 0.5);
 }
 
 .release-card {
@@ -272,7 +289,9 @@ main {
   padding: clamp(22px, 3vw, 34px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background:
+    linear-gradient(180deg, rgba(88, 166, 255, 0.06), transparent 42%),
+    var(--panel);
   box-shadow: 0 28px 80px var(--shadow);
   backdrop-filter: blur(18px);
   opacity: 0.36;
@@ -283,7 +302,7 @@ main {
 .release-card.is-visible {
   opacity: 1;
   transform: translateY(0);
-  border-color: rgba(72, 213, 151, 0.42);
+  border-color: rgba(45, 246, 163, 0.46);
 }
 
 .release-card::before {
@@ -296,7 +315,7 @@ main {
   border: 2px solid var(--bg);
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 8px rgba(72, 213, 151, 0.14);
+  box-shadow: 0 0 0 8px rgba(45, 246, 163, 0.14), 0 0 22px rgba(45, 246, 163, 0.7);
 }
 
 .release-card__meta {
@@ -319,8 +338,8 @@ main {
 }
 
 .pill--era {
-  color: #06110d;
-  background: var(--accent);
+  color: #03130c;
+  background: linear-gradient(135deg, var(--accent), #7fffd4);
   border-color: transparent;
 }
 
@@ -345,6 +364,7 @@ main {
   margin: 24px 0;
   padding-top: 22px;
   border-top: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(45, 246, 163, 0.04), transparent);
 }
 
 .release-card__impact span {
@@ -408,7 +428,10 @@ main {
 .quiz-shell {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(18, 24, 31, 0.9), rgba(9, 13, 18, 0.86));
+  background:
+    linear-gradient(180deg, rgba(45, 246, 163, 0.05), transparent 32%),
+    linear-gradient(90deg, rgba(88, 166, 255, 0.07), transparent),
+    rgba(8, 12, 18, 0.92);
   box-shadow: 0 28px 80px var(--shadow);
   overflow: hidden;
 }
@@ -452,7 +475,7 @@ main {
   padding: 14px 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(3, 9, 14, 0.72);
   color: var(--text);
   font: inherit;
   line-height: 1.55;
@@ -462,8 +485,8 @@ main {
 
 .quiz-option:hover:not(:disabled),
 .quiz-option:focus-visible {
-  border-color: rgba(121, 198, 255, 0.56);
-  background: rgba(121, 198, 255, 0.12);
+  border-color: rgba(88, 166, 255, 0.64);
+  background: rgba(88, 166, 255, 0.14);
   outline: none;
 }
 
@@ -472,8 +495,8 @@ main {
 }
 
 .quiz-option.is-correct {
-  border-color: rgba(72, 213, 151, 0.7);
-  background: rgba(72, 213, 151, 0.18);
+  border-color: rgba(45, 246, 163, 0.72);
+  background: rgba(45, 246, 163, 0.18);
 }
 
 .quiz-option.is-wrong {
@@ -486,7 +509,7 @@ main {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(45, 246, 163, 0.07);
   color: #c8d3d0;
   line-height: 1.75;
 }
@@ -500,8 +523,8 @@ main {
   padding: 10px 16px;
   border: 1px solid transparent;
   border-radius: 8px;
-  background: var(--accent);
-  color: #06110d;
+  background: linear-gradient(135deg, var(--accent), #74f7d0);
+  color: #03130c;
   font: inherit;
   font-size: 14px;
   font-weight: 850;
@@ -515,7 +538,7 @@ main {
 
 .button--ghost {
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(3, 9, 14, 0.72);
   color: var(--text);
 }
 
@@ -537,8 +560,9 @@ main {
   border: 1px solid rgba(72, 213, 151, 0.26);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(72, 213, 151, 0.16), rgba(121, 198, 255, 0.08)),
-    rgba(255, 255, 255, 0.04);
+    linear-gradient(135deg, rgba(45, 246, 163, 0.17), rgba(88, 166, 255, 0.1), rgba(163, 113, 247, 0.08)),
+    rgba(3, 9, 14, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 40px rgba(45, 246, 163, 0.1);
 }
 
 .quiz-rank-label,
@@ -567,7 +591,7 @@ main {
   padding: 10px 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(8, 11, 15, 0.62);
+  background: rgba(5, 7, 10, 0.72);
 }
 
 .quiz-score-ring strong {
@@ -586,7 +610,7 @@ main {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(3, 9, 14, 0.72);
 }
 
 .quiz-share-heading {
@@ -618,7 +642,7 @@ main {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(3, 9, 14, 0.72);
   color: #dce8e4;
   line-height: 1.6;
 }
@@ -639,7 +663,7 @@ main {
 
 .quiz-share--ghost {
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(3, 9, 14, 0.72);
   color: var(--text);
 }
 
