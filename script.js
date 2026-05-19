@@ -181,12 +181,216 @@ const releases = [
     sources: [
       ["GPT-5.3-Codex base model", "https://github.blog/changelog/2026-05-17-gpt-5-3-codex-is-now-the-base-model-for-copilot-business-and-enterprise"]
     ]
+  },
+  {
+    date: "2023-03-01",
+    era: "Visual Studio",
+    title: "Visual Studio 2022でCopilot利用が本格化",
+    body: "Microsoft Visual Studio Blogが、Visual Studio 2022内でGitHub Copilotがリアルタイムにコードや関数を提案する体験を紹介。Visual Studio 17.4以降を前提に、IntelliCodeとCopilotが並ぶAI支援として位置づけられました。",
+    impact: "CopilotはVS Codeだけの印象から、Microsoftの主力IDEにも入る開発支援へ広がります。",
+    sources: [
+      ["GitHub Copilot in Visual Studio 2022", "https://devblogs.microsoft.com/visualstudio/github-copilot-in-visual-studio-2022/"]
+    ]
+  },
+  {
+    date: "2023-06-08",
+    era: "IntelliSense",
+    title: "IntelliSenseの選択がCopilot補完を誘導",
+    body: "Visual Studio Blogは、IntelliSenseリストを開いたままCopilot予測を表示し、選択中のIntelliSense項目がCopilot補完の追加文脈になる更新を説明しました。",
+    impact: "従来のIDE補完と生成AI補完を競合させるのではなく、同じ編集体験の中で合流させる方向が見えます。",
+    sources: [
+      ["IntelliSense steers Copilot completions", "https://devblogs.microsoft.com/visualstudio/github-copilot-visual-studio-intellisense/"]
+    ]
+  },
+  {
+    date: "2024-04-09",
+    era: "VS Integration",
+    title: "Visual Studio 17.10 Previewで新しい統合Copilot体験",
+    body: "Visual Studio 17.10 Preview 3で、CopilotとCopilot Chatを1つのパッケージにまとめる新体験が紹介されました。補完、Inline Chat、Chat Window、コミットメッセージ、デバッグ、テスト生成などをIDE内に寄せています。",
+    impact: "別拡張を足す体験から、IDEに最初から深く組み込まれたAI機能へ移行します。",
+    sources: [
+      ["New Copilot experience in Visual Studio", "https://devblogs.microsoft.com/visualstudio/introducing-the-new-copilot-experience-in-visual-studio/"]
+    ]
+  },
+  {
+    date: "2024-05-21",
+    era: "VS GA",
+    title: "Visual Studio 2022 17.10で単一Copilot拡張がGA",
+    body: "Build 2024に合わせてVisual Studio 2022 17.10が一般提供。GitHub Copilotの補完とChatを統合した単一拡張が、Visual Studio Installerの推奨コンポーネントとして提供されました。",
+    impact: "Copilotは後付けの補助ツールではなく、Visual Studioの標準的な開発面に近い位置へ移ります。",
+    sources: [
+      ["Visual Studio 17.10 and Copilot", "https://devblogs.microsoft.com/visualstudio/visual-studio-2022-17-10-now-available/"]
+    ]
+  },
+  {
+    date: "2025-01-23",
+    era: "VS Free",
+    title: "Visual StudioにもCopilot Freeの導線",
+    body: "Visual Studio Blogは、GitHubアカウントだけで使えるCopilot FreeをVisual Studioで案内。月2,000補完、月50チャット、GPT-4oやClaude 3.5 Sonnetへのアクセスに触れつつ、Copilot Edits、@workspace、@vs、AIコミットメッセージ、エラー修正、ブレークポイント支援を整理しました。",
+    impact: "無料枠は単なる導入施策ではなく、IDE内の複数Copilot機能を試す入口になります。",
+    sources: [
+      ["Free GitHub Copilot for Visual Studio", "https://devblogs.microsoft.com/visualstudio/announcing-a-free-github-copilot-for-visual-studio/"]
+    ]
+  },
+  {
+    date: "2025-02-20",
+    era: "Tool calling",
+    title: "Visual Studio CopilotでTool Calling",
+    body: "Visual Studio Blogは、Copilotが質問に答えるために必要なコードやツールを自動的に探せるTool Callingを紹介。GPT-4oとClaude Sonnetで、手動で文脈を指定する負担を減らす方向が示されました。",
+    impact: "Agent Mode以前から、Copilotが自分で文脈取得手段を選ぶための土台が作られていました。",
+    sources: [
+      ["Tool Calling in GitHub Copilot for Visual Studio", "https://devblogs.microsoft.com/visualstudio/function-calling-is-now-enabled-in-github-copilot/"]
+    ]
+  },
+  {
+    date: "2025-05-13",
+    era: "VS Agent",
+    title: "Visual Studio 17.14でAgent Modeがpublic preview",
+    body: "Visual Studio 17.14でAgent Modeがpublic previewに。自然言語のタスクから、関連ファイルの特定、編集、コマンド提案、ビルド/テスト、MCPサーバー経由のツール呼び出しまでを反復する体験が示されました。",
+    impact: "Copilot Editsの次の段階として、複数ステップの作業をIDE内で回すエージェントへ進化します。",
+    sources: [
+      ["Agent mode preview for Visual Studio", "https://devblogs.microsoft.com/visualstudio/agent-mode-has-arrived-in-preview-for-visual-studio/"]
+    ]
+  },
+  {
+    date: "2025-05-19",
+    era: "Every IDE",
+    title: "Agent Modeが主要IDEへ広がる",
+    body: "Microsoft for Developersは、VS Codeでのロールアウト後、Visual Studio、GitHub Codespaces、JetBrains IDEs、Eclipse、XcodeでもAgent Modeを使えるようになったと説明しました。",
+    impact: "Copilotのエージェント化は特定IDEの機能ではなく、開発環境横断の標準体験になり始めます。",
+    sources: [
+      ["Agent mode for every developer", "https://devblogs.microsoft.com/blog/agent-mode-for-every-developer"]
+    ]
+  },
+  {
+    date: "2025-05-19",
+    era: ".NET Upgrade",
+    title: ".NETアップグレードをCopilot Agent Modeで支援",
+    body: "Visual Studio Blogは、GitHub Copilot app modernization - Upgrade for .NETのpublic previewを紹介。CopilotとAgent Modeを使い、.NETアプリのアップグレードパス判断と段階的な変更適用を支援します。",
+    impact: "Copilotは新規実装だけでなく、既存資産の移行やモダナイズのような面倒な長期作業にも入り込みます。",
+    sources: [
+      ["Faster .NET Upgrades Powered by Copilot", "https://devblogs.microsoft.com/visualstudio/faster-net-upgrades-powered-by-github-copilot/"]
+    ]
+  },
+  {
+    date: "2025-06-17",
+    era: "MCP GA",
+    title: "Visual Studio Agent ModeがMCP対応でGA",
+    body: "Visual StudioのJune updateでCopilot Agent Modeが一般提供。計画、編集、コマンド実行、build/lintエラーへの対応、自己修正に加え、MCPサーバーで外部ツールを拡張できることが強調されました。",
+    impact: "エージェントはIDE内だけの閉じた機能ではなく、リポジトリ、CI/CD、監視、社内ツールへ接続する構造を得ます。",
+    sources: [
+      ["Agent mode GA with MCP support", "https://devblogs.microsoft.com/visualstudio/agent-mode-is-now-generally-available-with-mcp-support/"]
+    ]
+  },
+  {
+    date: "2025-07-31",
+    era: "AI Edits",
+    title: "Visual Studio CopilotのAI編集適用が改善",
+    body: "Visual Studio Blogは、AI生成コードを既存ファイルへ壊さず差し込む難しさと、Side-by-side Mapperなどの改善を説明。Agent Modeが提案だけでなく実行へ進む基盤になったと位置づけています。",
+    impact: "エージェントの価値はモデル回答だけでなく、既存コードへ正確に変更を適用する編集エンジンにも依存します。",
+    sources: [
+      ["Smarter AI Edits in Visual Studio Copilot", "https://devblogs.microsoft.com/visualstudio/smarter-ai-edits-in-visual-studio-copilot"]
+    ]
+  },
+  {
+    date: "2025-08-19",
+    era: "MCP",
+    title: "Visual StudioでMCPが一般提供",
+    body: "Visual Studio Blogは、MCPサポートのGAを発表。.mcp.jsonによるローカル/リモートMCPサーバー接続、入力や認証、ツール管理のフローを整え、Agent Modeを外部スタックに接続しやすくしました。",
+    impact: "Copilotの能力追加が拡張機能ごとの個別実装ではなく、標準プロトコルで外部ツールを接ぐ形へ向かいます。",
+    sources: [
+      ["MCP GA in Visual Studio", "https://devblogs.microsoft.com/visualstudio/mcp-is-now-generally-available-in-visual-studio/"]
+    ]
+  },
+  {
+    date: "2025-09-11",
+    era: "Profiler Agent",
+    title: "Copilot Profiler AgentがVisual Studio 2026 Insidersへ",
+    body: "Visual Studio Blogは、CPU使用率、メモリ割り当て、実行時挙動を分析し、ボトルネック特定、BenchmarkDotNetベンチ生成、改善提案、前後比較まで行うCopilot Profiler Agentを紹介しました。",
+    impact: "Copilotは一般的なコード編集から、診断・性能分析のような専門ツール連携型エージェントへ分化します。",
+    sources: [
+      ["Copilot Profiler Agent in Visual Studio", "https://devblogs.microsoft.com/visualstudio/copilot-profiler-agent-visual-studio/"]
+    ]
+  },
+  {
+    date: "2025-09-17",
+    era: "MCP Context",
+    title: "MCP Prompts / Resources / Sampling対応",
+    body: "Visual Studio Blogは、MCPのPrompts、Resources、Sampling対応を紹介。外部サーバーがプロンプトやリソースを提供し、Copilotがエンジニアリングスタックの文脈をより構造的に扱えるようになります。",
+    impact: "MCPは単なるツール呼び出しから、エージェントへ知識・手順・データを渡す文脈レイヤーへ広がります。",
+    sources: [
+      ["MCP prompts, resources, and sampling", "https://devblogs.microsoft.com/visualstudio/mcp-prompts-resources-sampling/"]
+    ]
+  },
+  {
+    date: "2025-12-01",
+    era: "C++ Modernize",
+    title: "C++向けCopilot機能がVisual Studio 2026 private preview",
+    body: "Visual Studio Blogは、Visual Studio 2026のGitHub Copilot機能として、大規模C++リファクタ、C++ビルド性能改善、MSVC Build Toolsアップグレード支援を紹介しました。",
+    impact: "Copilotは言語サーバーやIntelliSenseの精密な情報を使い、C++のような大規模・高制約コードでも実務タスクに踏み込みます。",
+    sources: [
+      ["C++ build performance and refactor with Copilot", "https://devblogs.microsoft.com/visualstudio/upgrade-msvc-improve-c-build-performance-and-refactor-c-code-with-github-copilot/"]
+    ]
+  },
+  {
+    date: "2026-02-04",
+    era: "Roadmap",
+    title: "Visual Studio AI Roadmap: 信頼性、Planning Agent、SDK統合",
+    body: "Visual Studio BlogのFebruary roadmapでは、Agent ModeとCoding Agentsの進捗表示、失敗/リトライ、診断ログ、Agent Skills、Unified Sessions、Planning Agent、Copilot SDK/CLI連携、MCPガバナンス、巨大コンテキスト管理が挙げられました。",
+    impact: "Copilotの進化は派手な新機能だけでなく、長時間作業の安定性、管理、文脈圧縮といった運用面へ移ります。",
+    sources: [
+      ["Roadmap for AI in Visual Studio", "https://devblogs.microsoft.com/visualstudio/roadmap-for-ai-in-visual-studio-february"]
+    ]
+  },
+  {
+    date: "2026-02-19",
+    era: "Custom agents",
+    title: "Visual StudioでBuilt-in / Build-Your-Own Agents",
+    body: "Visual Studio Blogは、Debugger、Profiler、Testingなどのプリセットエージェントと、チーム固有のCustom Agentsを作る仕組みを紹介しました。",
+    impact: "Copilotは1つの汎用助手ではなく、IDEのネイティブ機能に深く接続した専門エージェント群へ分かれます。",
+    sources: [
+      ["Custom Agents in Visual Studio", "https://devblogs.microsoft.com/visualstudio/custom-agents-in-visual-studio-built-in-and-build-your-own-agents/"]
+    ]
+  },
+  {
+    date: "2026-02-24",
+    era: "VS 2026",
+    title: "Visual Studio February Update: テスト生成とC++ Modernization",
+    body: "Visual Studio 2026 Stable 18.3のFebruary updateで、@TestによるCopilotテスト生成、/generateInstructions、/savePrompt、WinForms Expert Agent、C++ App Modernization public previewなどが案内されました。",
+    impact: "Copilotの体験が、テスト、プロンプト再利用、リポジトリ指示生成、Windowsデスクトップ保守、C++移行に細分化されます。",
+    sources: [
+      ["Visual Studio February Update", "https://devblogs.microsoft.com/visualstudio/visual-studio-february-update"]
+    ]
+  },
+  {
+    date: "2026-04-28",
+    era: "Cloud agent",
+    title: "Visual Studio April Update: Cloud Agent Integration",
+    body: "Visual Studio Blogは、IDEからCloud agentセッションを開始し、リポジトリにIssueを作ってPull Requestで返す流れを紹介。Custom agentsのuser-level定義、C++ code editing toolsのGA、Debugger Agentも含まれます。",
+    impact: "ローカルIDEのCopilotとGitHub上のクラウド実行エージェントが、同じ作業導線の中で接続されます。",
+    sources: [
+      ["Visual Studio April Update", "https://devblogs.microsoft.com/visualstudio/visual-studio-april-update-cloud-agent-integration/"]
+    ]
+  },
+  {
+    date: "2026-05-13",
+    era: "Agent Skills",
+    title: "Visual StudioでAgent Skills",
+    body: "Visual Studio Blogは、Copilot agentsにチーム固有の手順を教えるAgent Skillsを紹介。`.github/skills/`、`.claude/skills/`、`.agents/skills/`やユーザープロファイル配下から自動検出され、タスクに応じて動的に読み込まれます。",
+    impact: "常時適用のcustom instructionsと、タスク特化で発動するskillsを使い分け、チームの実務手順をエージェントへ渡せるようになります。",
+    sources: [
+      ["Agent Skills in Visual Studio", "https://devblogs.microsoft.com/visualstudio/agent-skills-in-visual-studio/"]
+    ]
   }
 ];
 
 const timeline = document.querySelector("#timelineItems");
 const sourceGrid = document.querySelector("#sourceGrid");
 const progressBar = document.querySelector("#progressBar");
+
+function getSortedReleases() {
+  return [...releases].sort((a, b) => a.date.localeCompare(b.date));
+}
 
 function formatDate(value) {
   const date = new Date(`${value}T00:00:00`);
@@ -198,7 +402,7 @@ function formatDate(value) {
 }
 
 function renderTimeline() {
-  timeline.innerHTML = releases.map((item) => {
+  timeline.innerHTML = getSortedReleases().map((item) => {
     const links = item.sources.map(([label, href]) => (
       `<a href="${href}" target="_blank" rel="noreferrer">${label}</a>`
     )).join("");
@@ -223,7 +427,7 @@ function renderTimeline() {
 
 function renderSources() {
   const seen = new Map();
-  releases.forEach((item) => {
+  getSortedReleases().forEach((item) => {
     item.sources.forEach(([label, href]) => {
       if (!seen.has(href)) seen.set(href, label);
     });
