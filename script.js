@@ -639,6 +639,8 @@ const quizQuestions = [
 
 let quizIndex = 0;
 let quizAnswers = [];
+let quizSelections = [];
+let quizOptionOrders = buildQuizOptionOrders();
 let quizLocked = false;
 
 function getSortedReleases() {
@@ -714,24 +716,45 @@ function getQuizRank(score) {
   return "Copilot timeline explorer";
 }
 
+function buildQuizOptionOrders() {
+  const correctPositions = [2, 0, 3, 1, 2, 1, 3, 0, 2, 1];
+
+  return quizQuestions.map((item, questionIndex) => {
+    const options = item.options.map((text, originalIndex) => ({ text, originalIndex }));
+    const correct = options.find((option) => option.originalIndex === item.answer);
+    const distractors = options.filter((option) => option.originalIndex !== item.answer);
+    const targetPosition = correctPositions[questionIndex] % options.length;
+    const ordered = [];
+    let distractorIndex = 0;
+
+    for (let index = 0; index < options.length; index += 1) {
+      ordered.push(index === targetPosition ? correct : distractors[distractorIndex]);
+      if (index !== targetPosition) distractorIndex += 1;
+    }
+
+    return ordered;
+  });
+}
+
 function renderQuiz() {
   if (!quizCard) return;
 
   const item = quizQuestions[quizIndex];
+  const optionOrder = quizOptionOrders[quizIndex];
   const score = quizAnswers.filter(Boolean).length;
-  quizLocked = quizAnswers[quizIndex] !== undefined;
+  quizLocked = quizSelections[quizIndex] !== undefined;
   quizProgress.textContent = `Question ${quizIndex + 1} / ${quizQuestions.length}`;
   quizScore.textContent = `Score ${score}`;
   quizNext.textContent = quizIndex === quizQuestions.length - 1 ? "Results" : "Next";
   quizNext.disabled = !quizLocked;
   quizResult.hidden = true;
 
-  const selected = quizAnswers[quizIndex];
-  const options = item.options.map((option, index) => {
+  const selected = quizSelections[quizIndex];
+  const options = optionOrder.map((option, index) => {
     let state = "";
-    if (selected !== undefined && index === item.answer) state = " is-correct";
-    if (selected !== undefined && index === selected && index !== item.answer) state = " is-wrong";
-    return `<button class="quiz-option${state}" type="button" data-index="${index}" ${selected !== undefined ? "disabled" : ""}>${option}</button>`;
+    if (selected !== undefined && option.originalIndex === item.answer) state = " is-correct";
+    if (selected !== undefined && index === selected && option.originalIndex !== item.answer) state = " is-wrong";
+    return `<button class="quiz-option${state}" type="button" data-index="${index}" ${selected !== undefined ? "disabled" : ""}>${option.text}</button>`;
   }).join("");
 
   quizCard.hidden = false;
@@ -745,7 +768,9 @@ function renderQuiz() {
 function answerQuiz(index) {
   if (quizLocked) return;
   const item = quizQuestions[quizIndex];
-  quizAnswers[quizIndex] = index === item.answer;
+  const selected = quizOptionOrders[quizIndex][index];
+  quizSelections[quizIndex] = index;
+  quizAnswers[quizIndex] = selected.originalIndex === item.answer;
   quizLocked = true;
   renderQuiz();
 }
@@ -755,7 +780,9 @@ function showQuizResult() {
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
   const text = `Copilot進化クイズで ${score}/${quizQuestions.length} 点でした。ランク: ${rank}。補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦: ${pageUrl} #CopilotChan #GitHubCopilot`;
-  const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
+  const encodedText = encodeURIComponent(text);
+  const shareUrl = `https://x.com/intent/post?text=${encodedText}`;
+  const fallbackShareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
   const missed = quizQuestions.map((item, index) => (
     `<div>${quizAnswers[index] ? "OK" : "Review"}: ${item.question}</div>`
   )).join("");
@@ -769,10 +796,15 @@ function showQuizResult() {
     <h3>${score}/${quizQuestions.length}</h3>
     <p>${rank}。Copilot ChatやAgent Modeの更新をどれだけ追えているかのスコアです。</p>
     <div class="quiz-breakdown">${missed}</div>
+    <label class="quiz-share-text">
+      <span>Post text</span>
+      <textarea id="quizShareText" readonly>${text}</textarea>
+    </label>
     <div class="quiz-share-row">
-      <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Post result to X</a>
-      <button class="button button--ghost" type="button" data-share-text="${encodeURIComponent(text)}">Share</button>
-      <button class="button button--ghost" type="button" data-copy-text="${encodeURIComponent(text)}">Copy text</button>
+      <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Open X compose</a>
+      <a class="quiz-share quiz-share--ghost" href="${fallbackShareUrl}" target="_blank" rel="noreferrer">Try alternate X link</a>
+      <button class="button button--ghost" type="button" data-share-text="${encodedText}">Share</button>
+      <button class="button button--ghost" type="button" data-copy-text="${encodedText}">Copy text</button>
     </div>
     <p class="quiz-copy-note" id="quizCopyNote" aria-live="polite"></p>
   `;
@@ -781,6 +813,8 @@ function showQuizResult() {
 function restartQuiz() {
   quizIndex = 0;
   quizAnswers = [];
+  quizSelections = [];
+  quizOptionOrders = buildQuizOptionOrders();
   quizLocked = false;
   renderQuiz();
 }
@@ -808,6 +842,7 @@ if (quizCard) {
     const shareButton = event.target.closest("[data-share-text]");
     const copyButton = event.target.closest("[data-copy-text]");
     const note = document.querySelector("#quizCopyNote");
+    const textArea = document.querySelector("#quizShareText");
     const encoded = shareButton?.dataset.shareText || copyButton?.dataset.copyText;
     if (!encoded) return;
 
@@ -828,8 +863,10 @@ if (quizCard) {
     try {
       await navigator.clipboard.writeText(text);
       note.textContent = shareButton ? "共有が使えない環境なので投稿文をコピーしました。" : "投稿文をコピーしました。";
+      textArea?.select();
     } catch {
-      note.textContent = "コピーできませんでした。Post result to Xを開いて手動で投稿してください。";
+      textArea?.select();
+      note.textContent = "コピーできませんでした。投稿文欄を選択したので、手動でコピーしてください。";
     }
   });
 }

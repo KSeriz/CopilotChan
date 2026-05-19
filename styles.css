@@ -558,11 +558,44 @@ main {
   font-weight: 850;
 }
 
+.quiz-share--ghost {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
 .quiz-share-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+}
+
+.quiz-share-text {
+  display: grid;
+  gap: 8px;
+  margin: 22px 0 14px;
+}
+
+.quiz-share-text span {
+  color: var(--warm);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quiz-share-text textarea {
+  width: 100%;
+  min-height: 118px;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.26);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.65;
 }
 
 .quiz-copy-note {
