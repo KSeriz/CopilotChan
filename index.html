@@ -16,6 +16,7 @@
         <a class="nav__mark" href="#top">Copilot Evolution</a>
         <div class="nav__links">
           <a href="#timeline">Timeline</a>
+          <a href="#quiz">Quiz</a>
           <a href="#sources">Sources</a>
         </div>
       </nav>
@@ -78,6 +79,29 @@
           <h2>Release timeline</h2>
         </div>
         <div class="timeline" id="timelineItems"></div>
+      </section>
+
+      <section class="quiz-section" id="quiz" aria-label="Copilot evolution quiz">
+        <div class="quiz-intro">
+          <p class="section-label">Copilot update quiz</p>
+          <h2>10問でCopilot進化履歴をチェック</h2>
+          <p>
+            GitHub Copilot Chat、Agent Mode、MCP、Visual Studio統合、CLI、Skillsなど、
+            公式リリースをもとにした10問です。回答後にスコアをXへ投稿できます。
+          </p>
+        </div>
+        <div class="quiz-shell">
+          <div class="quiz-status">
+            <span id="quizProgress">Question 1 / 10</span>
+            <span id="quizScore">Score 0</span>
+          </div>
+          <div class="quiz-card" id="quizCard"></div>
+          <div class="quiz-actions">
+            <button class="button button--ghost" id="quizRestart" type="button">Restart</button>
+            <button class="button" id="quizNext" type="button">Next</button>
+          </div>
+          <div class="quiz-result" id="quizResult" hidden></div>
+        </div>
       </section>
 
       <section class="sources" id="sources">

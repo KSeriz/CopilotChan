@@ -183,6 +183,136 @@ const releases = [
     ]
   },
   {
+    date: "2025-03-18",
+    era: "Chat Preview",
+    title: "GitHub上のCopilot Chatで即時プレビューとIssue作業",
+    body: "Copilot Chat on GitHubのpublic previewとして、HTMLの即時プレビュー、生成ファイルの編集、Mermaid図の生成/プレビュー、Issueをサイドパネルで扱う機能が追加されました。",
+    impact: "Chatは回答を返すだけでなく、GitHub上で小さな制作・確認・Issue作業をその場で進めるUIへ変わります。",
+    sources: [
+      ["Instant previews and issues in Copilot Chat", "https://github.blog/changelog/2025-03-17-instant-previews-flexible-editing-and-working-with-issues-in-copilot-chat-preview/"]
+    ]
+  },
+  {
+    date: "2025-04-02",
+    era: "Mobile Chat",
+    title: "GitHub MobileのCopilot Chatでマルチモデル選択",
+    body: "GitHub MobileのCopilot Chatで、OpenAI o3-mini、Claude 3.5 Sonnet、Gemini 2.0などのモデル選択が使えるようになりました。",
+    impact: "モデル選択はデスクトップの高度機能ではなく、モバイルでの相談体験にも入ります。",
+    sources: [
+      ["Multi-model selection on GitHub Mobile", "https://github.blog/changelog/2025-04-02-copilot-chat-on-github-mobile-now-supports-multi-model-selection/"]
+    ]
+  },
+  {
+    date: "2025-04-16",
+    era: "Vision",
+    title: "Copilot Chatの画像入力がClaude/Geminiにも拡大",
+    body: "VS Code、Visual Studio、github.comのimmersive modeで、画像についてCopilot Chatに相談するVision機能がClaude Sonnet 3.5/3.7、Gemini 2.0 Flash/2.5 Pro、GPT-4oで使えるpublic previewになりました。",
+    impact: "エラー画面、UIモック、構成図をコード相談の文脈として扱えるようになり、Chatの入力がテキスト中心から広がります。",
+    sources: [
+      ["Vision input with Claude and Gemini", "https://github.blog/changelog/2025-04-16-using-vision-input-in-copilot-chat-with-claude-and-gemini-is-now-in-public-preview"]
+    ]
+  },
+  {
+    date: "2025-06-04",
+    era: "References",
+    title: "@でファイル、Issue、PR、拡張機能をChatに添付",
+    body: "Copilot Chatで`@`を入力して、ファイル、リポジトリ、Issue、Pull Request、拡張機能を参照として添付できるようになりました。",
+    impact: "質問ごとに文脈を説明し直すのではなく、GitHub上の実体を直接Chatへ渡す流れが強くなります。",
+    sources: [
+      ["Attach references using @", "https://github.blog/changelog/2025-06-03-copilot-chat-now-supports-attaching-references-using-the-symbol"]
+    ]
+  },
+  {
+    date: "2025-06-25",
+    era: "Context",
+    title: "添付とCopilot Spacesの文脈容量が拡張",
+    body: "Copilot Chatのpublic previewで、大きなテキストを添付へ変換、最大4枚の画像添付、外部リソース込みHTMLプレビュー、Copilot Spacesの文脈保持量2倍が追加されました。",
+    impact: "Chatは短い質問応答から、プロジェクト情報や視覚資料を持ち込む作業空間へ近づきます。",
+    sources: [
+      ["Improved attachments and larger context", "https://github.blog/changelog/2025-06-25-improved-attachments-and-larger-context-in-copilot-chat-in-public-preview/"]
+    ]
+  },
+  {
+    date: "2025-07-09",
+    era: "Chat GA",
+    title: "GitHub上のCopilot Chat新機能群が一般提供",
+    body: "GitHub上のCopilot Chatで、即時プレビュー、柔軟な編集、Issue管理、改善された添付、モデル選択、メッセージ編集、別モデルでの再生成、スレッド管理などが一般提供されました。",
+    impact: "GitHub上のChatが、単発回答からファイル操作・プレビュー・Issue確認を含む作業画面に変わります。",
+    sources: [
+      ["New Copilot Chat features GA", "https://github.blog/changelog/2025-07-09-new-copilot-chat-features-now-generally-available-on-github"]
+    ]
+  },
+  {
+    date: "2025-07-31",
+    era: "Repo Skills",
+    title: "Copilot Chatがリポジトリ管理スキルを獲得",
+    body: "github.comのCopilot Chatで、ファイル作成/更新/push、ブランチ作成、Pull Requestのマージ支援など、リポジトリワークフローをChat内で進める機能が追加されました。",
+    impact: "Copilot Chatは相談窓口から、GitHub上の作業を実行に移す入口へ進化します。",
+    sources: [
+      ["Repository management skills in Copilot Chat", "https://github.blog/changelog/2025-07-31-copilot-chat-unlocks-new-repository-management-skills/"]
+    ]
+  },
+  {
+    date: "2025-09-15",
+    era: "Auto Model",
+    title: "VS CodeのCopilot ChatにAuto model selection",
+    body: "VS CodeのCopilot Chatで、Copilotがモデルを選ぶAuto optionがpublic previewになりました。初期プレビューではGPT-5、GPT-5 mini、GPT-4.1、Sonnet 4、Sonnet 3.5などへルーティングします。",
+    impact: "ユーザーが毎回モデル選択を考えるのではなく、可用性や将来的にはタスク文脈に応じた選択へ向かいます。",
+    sources: [
+      ["Auto model selection in VS Code", "https://github.blog/changelog/2025-09-14-auto-model-selection-for-copilot-in-vs-code-in-public-preview/"]
+    ]
+  },
+  {
+    date: "2025-11-11",
+    era: "VS Auto",
+    title: "Visual StudioのCopilotにもAuto model selection",
+    body: "Visual StudioのCopilot ChatでAuto optionがpublic previewになり、GPT-5、GPT-5 mini、GPT-4.1、Sonnet 4.5、Haiku 4.5などからCopilotがモデルを選ぶようになりました。",
+    impact: "Auto model selectionはVS CodeだけでなくVisual Studioにも広がり、モデル選択がUI横断の機能になります。",
+    sources: [
+      ["Auto model selection in Visual Studio", "https://github.blog/changelog/2025-11-11-auto-model-selection-for-copilot-in-visual-studio-in-public-preview/"]
+    ]
+  },
+  {
+    date: "2026-03-11",
+    era: "Repo Explore",
+    title: "WebのCopilot Chatでリポジトリファイル探索",
+    body: "github.comのCopilot Chatで、ファイルを表示しながらリポジトリのファイルツリーを探索し、選択したファイルを一時参照としてChatに追加できるpublic previewが始まりました。",
+    impact: "Web上のChatでも、コードベース構造を見ながら質問するIDE的な体験に近づきます。",
+    sources: [
+      ["Explore a repository using Copilot on the web", "https://github.blog/changelog/2026-03-11-explore-a-repository-using-copilot-on-the-web"]
+    ]
+  },
+  {
+    date: "2026-04-01",
+    era: "Mobile Agent",
+    title: "GitHub MobileのCopilotタブとセッションログ",
+    body: "GitHub MobileでCopilotタブが刷新され、agent sessionsとchat historyを見やすくし、セッションログ閲覧、完了セッションからのPR作成、PRレビュー、実行中セッション停止がアプリ内で可能になりました。",
+    impact: "Copilotのエージェント作業はデスク前だけでなく、モバイルから監視・レビュー・制御する対象になります。",
+    sources: [
+      ["GitHub Mobile Copilot tab and session logs", "https://github.blog/changelog/2026-04-01-github-mobile-stay-in-flow-with-a-refreshed-copilot-tab-and-native-session-logs"]
+    ]
+  },
+  {
+    date: "2026-04-23",
+    era: "PR Chat",
+    title: "Copilot ChatがPull Request理解/レビュー/要約を強化",
+    body: "Copilot ChatがPull Requestのコメント、ファイル変更、コミット、レビューを文脈に含め、PRレビューや要約を構造化して返せるようになりました。",
+    impact: "PRを見る、理解する、レビューするというGitHubの中心作業にCopilot Chatが直接入ります。",
+    sources: [
+      ["Copilot Chat improvements for pull requests", "https://github.blog/changelog/2026-04-23-copilot-chat-improvements-for-pull-requests"]
+    ]
+  },
+  {
+    date: "2026-05-18",
+    era: "Contextual Chat",
+    title: "GitHub WebのCopilot Chatが閲覧ページ文脈で開く",
+    body: "GitHub WebでCopilotアイコンを押すと、github.com/copilotへ移動せず現在ページ上のパネルとしてChatが開くようになりました。IssueやPRなど閲覧中のGitHub surfaceが自動で文脈添付され、会話をagent sessionへ変えることもできます。",
+    impact: "Copilot Chatは別ページの相談場所ではなく、GitHub上のどこでも開く文脈パネルになります。",
+    sources: [
+      ["Ask questions in context with Copilot on web", "https://github.blog/changelog/2026-05-18-ask-questions-in-context-with-copilot-on-web/"]
+    ]
+  },
+  {
     date: "2023-03-01",
     era: "Visual Studio",
     title: "Visual Studio 2022でCopilot利用が本格化",
@@ -387,6 +517,129 @@ const releases = [
 const timeline = document.querySelector("#timelineItems");
 const sourceGrid = document.querySelector("#sourceGrid");
 const progressBar = document.querySelector("#progressBar");
+const quizCard = document.querySelector("#quizCard");
+const quizProgress = document.querySelector("#quizProgress");
+const quizScore = document.querySelector("#quizScore");
+const quizNext = document.querySelector("#quizNext");
+const quizRestart = document.querySelector("#quizRestart");
+const quizResult = document.querySelector("#quizResult");
+
+const quizQuestions = [
+  {
+    question: "2026年5月、GitHub WebのCopilot Chatは何が大きく変わった？",
+    options: [
+      "閲覧中のIssueやPRなどを文脈にしたパネルとして開くようになった",
+      "VS Code専用の拡張機能になった",
+      "GitHub Mobileから削除された",
+      "コード補完だけに機能が絞られた"
+    ],
+    answer: 0,
+    explanation: "2026年5月18日のChangelogで、Copilot Chat on webは現在見ているGitHub surfaceを文脈にしてパネルで開くGA機能になりました。"
+  },
+  {
+    question: "Copilot ChatのPR向け改善で追加された能力として正しいものは？",
+    options: [
+      "PR理解、PRレビュー、PR要約",
+      "npm packageの自動公開だけ",
+      "GitHub Actionsの課金停止",
+      "リポジトリの完全削除"
+    ],
+    answer: 0,
+    explanation: "2026年4月23日のChangelogでは、コメント、ファイル変更、コミット、レビューを使ったPR理解、レビュー、要約が説明されています。"
+  },
+  {
+    question: "2025年6月、Copilot Chatで`@`を使ってできるようになったことは？",
+    options: [
+      "ファイル、リポジトリ、Issue、PRなどを参照として添付する",
+      "Xへ自動投稿する",
+      "GitHubアカウント名を変更する",
+      "ローカルPCの全ファイルを常時同期する"
+    ],
+    answer: 0,
+    explanation: "`@`による参照添付は、実体のあるGitHub文脈をChatへ渡すためのアップデートです。"
+  },
+  {
+    question: "2025年7月にGAになったGitHub上のCopilot Chat機能群に含まれるものは？",
+    options: [
+      "即時プレビュー、柔軟な編集、Issue管理、改善された添付、モデル選択",
+      "GitHub Pagesの廃止",
+      "Visual Studio Codeの有料化",
+      "Pull Requestの禁止"
+    ],
+    answer: 0,
+    explanation: "2025年7月9日のChangelogでは、previewだった複数のChat機能がGitHub上で一般提供になりました。"
+  },
+  {
+    question: "Copilot ChatのVision input拡張で現実的になった使い方は？",
+    options: [
+      "エラー画面やUIモック、構成図を画像として渡して相談する",
+      "画像を送ると必ずGitHub Actionsが停止する",
+      "画像入力はGPT-4o以外で永久に使えない",
+      "テキスト入力が完全に廃止される"
+    ],
+    answer: 0,
+    explanation: "2025年4月のpublic previewで、ClaudeやGeminiにもVision inputが広がり、スクリーンショットや図を文脈にできます。"
+  },
+  {
+    question: "Visual StudioのAgent Mode GAで重要だった外部連携のキーワードは？",
+    options: [
+      "MCP",
+      "RSS",
+      "FTP",
+      "SMTP"
+    ],
+    answer: 0,
+    explanation: "Visual Studio Agent ModeはMCPサーバーで外部ツールやサービスへ接続できる点が強調されました。"
+  },
+  {
+    question: "GitHub Mobileの2026年4月アップデートで強化されたものは？",
+    options: [
+      "Copilotタブ、agent sessionログ、PR作成/レビュー、実行中セッション停止",
+      "Issue機能の削除",
+      "モバイルでのChat履歴非表示",
+      "リポジトリ閲覧の廃止"
+    ],
+    answer: 0,
+    explanation: "Mobileでもagentic workflowを追跡し、ログ閲覧やPR操作ができるようになりました。"
+  },
+  {
+    question: "Auto model selectionの狙いとして最も近いものは？",
+    options: [
+      "Copilotが利用可能性や将来的なタスク文脈に応じてモデルを選ぶ",
+      "ユーザーが必ず手動で全モデルを順番に試す",
+      "モデル選択UIを完全に削除して透明性もなくす",
+      "Chatを単一の古いモデルに固定する"
+    ],
+    answer: 0,
+    explanation: "Auto model selectionは初期段階では可用性を重視し、応答に使われたモデルの透明性も残します。"
+  },
+  {
+    question: "Agent Skillsの役割として正しいものは？",
+    options: [
+      "チーム固有の手順やワークフローを、必要なタスクで動的にCopilot agentへ渡す",
+      "常に全回答を日本語に固定するだけ",
+      "GitHubリポジトリを非公開にする設定",
+      "画像生成専用の有料機能"
+    ],
+    answer: 0,
+    explanation: "Agent Skillsはcustom instructionsと違い、タスクに応じて読み込まれる手順セットです。"
+  },
+  {
+    question: "2025年7月末のリポジトリ管理スキルで、Copilot Chatができるようになったことは？",
+    options: [
+      "ファイル作成/更新/push、ブランチ作成、PRマージ支援",
+      "GitHub全体の利用規約変更",
+      "ユーザーのSNS投稿を自動収集",
+      "すべてのIssueを強制クローズ"
+    ],
+    answer: 0,
+    explanation: "Copilot ChatはGitHub上の会話からリポジトリ作業へ進める入口として強化されました。"
+  }
+];
+
+let quizIndex = 0;
+let quizAnswers = [];
+let quizLocked = false;
 
 function getSortedReleases() {
   return [...releases].sort((a, b) => a.date.localeCompare(b.date));
@@ -454,8 +707,102 @@ function observeCards() {
   document.querySelectorAll(".release-card").forEach((card) => observer.observe(card));
 }
 
+function getQuizRank(score) {
+  if (score === quizQuestions.length) return "Copilot release archaeologist";
+  if (score >= 8) return "Agent Mode watcher";
+  if (score >= 5) return "Chat update tracker";
+  return "Copilot timeline explorer";
+}
+
+function renderQuiz() {
+  if (!quizCard) return;
+
+  const item = quizQuestions[quizIndex];
+  const score = quizAnswers.filter(Boolean).length;
+  quizLocked = quizAnswers[quizIndex] !== undefined;
+  quizProgress.textContent = `Question ${quizIndex + 1} / ${quizQuestions.length}`;
+  quizScore.textContent = `Score ${score}`;
+  quizNext.textContent = quizIndex === quizQuestions.length - 1 ? "Results" : "Next";
+  quizNext.disabled = !quizLocked;
+  quizResult.hidden = true;
+
+  const selected = quizAnswers[quizIndex];
+  const options = item.options.map((option, index) => {
+    let state = "";
+    if (selected !== undefined && index === item.answer) state = " is-correct";
+    if (selected !== undefined && index === selected && index !== item.answer) state = " is-wrong";
+    return `<button class="quiz-option${state}" type="button" data-index="${index}" ${selected !== undefined ? "disabled" : ""}>${option}</button>`;
+  }).join("");
+
+  quizCard.hidden = false;
+  quizCard.innerHTML = `
+    <h3>${item.question}</h3>
+    <div class="quiz-options">${options}</div>
+    ${selected !== undefined ? `<p class="quiz-explain"><strong>${selected === item.answer ? "Correct" : "Review"}</strong><br>${item.explanation}</p>` : ""}
+  `;
+}
+
+function answerQuiz(index) {
+  if (quizLocked) return;
+  const item = quizQuestions[quizIndex];
+  quizAnswers[quizIndex] = index === item.answer;
+  quizLocked = true;
+  renderQuiz();
+}
+
+function showQuizResult() {
+  const score = quizAnswers.filter(Boolean).length;
+  const rank = getQuizRank(score);
+  const pageUrl = "https://kseriz.github.io/CopilotChan/";
+  const text = `Copilot進化クイズで ${score}/${quizQuestions.length} 点でした。ランク: ${rank}。補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦: ${pageUrl} #CopilotChan #GitHubCopilot`;
+  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  const missed = quizQuestions.map((item, index) => (
+    `<div>${quizAnswers[index] ? "OK" : "Review"}: ${item.question}</div>`
+  )).join("");
+
+  quizCard.hidden = true;
+  quizNext.disabled = true;
+  quizResult.hidden = false;
+  quizProgress.textContent = "Completed";
+  quizScore.textContent = `Score ${score}`;
+  quizResult.innerHTML = `
+    <h3>${score}/${quizQuestions.length}</h3>
+    <p>${rank}。Copilot ChatやAgent Modeの更新をどれだけ追えているかのスコアです。</p>
+    <div class="quiz-breakdown">${missed}</div>
+    <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Post result to X</a>
+  `;
+}
+
+function restartQuiz() {
+  quizIndex = 0;
+  quizAnswers = [];
+  quizLocked = false;
+  renderQuiz();
+}
+
+if (quizCard) {
+  quizCard.addEventListener("click", (event) => {
+    const button = event.target.closest(".quiz-option");
+    if (!button) return;
+    answerQuiz(Number(button.dataset.index));
+  });
+
+  quizNext.addEventListener("click", () => {
+    if (!quizLocked) return;
+    if (quizIndex === quizQuestions.length - 1) {
+      showQuizResult();
+      return;
+    }
+    quizIndex += 1;
+    renderQuiz();
+  });
+
+  quizRestart.addEventListener("click", restartQuiz);
+}
+
 renderTimeline();
 renderSources();
 observeCards();
+renderQuiz();
 updateProgress();
 window.addEventListener("scroll", updateProgress, { passive: true });
