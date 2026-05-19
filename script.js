@@ -808,10 +808,16 @@ function showQuizResult() {
   const score = quizAnswers.filter(Boolean).length;
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
-  const text = `Copilot進化クイズの結果: ${score}/${quizQuestions.length} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦:\n${pageUrl}\n#CopilotChan #GitHubCopilot`;
-  const encodedText = encodeURIComponent(text);
-  const shareUrl = `https://x.com/intent/post?text=${encodedText}`;
-  const fallbackShareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
+  const shareText = `Copilot進化クイズの結果: ${score}/${quizQuestions.length} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦`;
+  const copyText = `${shareText}\n${pageUrl}\n#CopilotChan #GitHubCopilot`;
+  const encodedText = encodeURIComponent(copyText);
+  const webIntentParams = new URLSearchParams({
+    text: shareText,
+    url: pageUrl,
+    hashtags: "CopilotChan,GitHubCopilot"
+  });
+  const shareUrl = `https://twitter.com/intent/tweet?${webIntentParams.toString()}`;
+  const xFallbackUrl = `https://x.com/intent/tweet?${webIntentParams.toString()}`;
   const missed = quizQuestions.map((item, index) => (
     `<div>${quizAnswers[index] ? "OK" : "Review"}: ${item.question}</div>`
   )).join("");
@@ -835,14 +841,18 @@ function showQuizResult() {
     <div class="quiz-share-panel">
       <p class="quiz-share-heading">Share your result</p>
       <div class="quiz-share-row">
-        <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Share on X</a>
-        <a class="quiz-share quiz-share--ghost" href="${fallbackShareUrl}" target="_blank" rel="noreferrer">Alternate X link</a>
-        <button class="button button--ghost" type="button" data-share-text="${encodedText}">System share</button>
+        <button class="button" type="button" data-open-x="${shareUrl}">Xの投稿画面を開く</button>
+        <a class="quiz-share quiz-share--ghost" href="${shareUrl}" target="_blank" rel="noreferrer">直接リンクで開く</a>
+        <a class="quiz-share quiz-share--ghost" href="${xFallbackUrl}" target="_blank" rel="noreferrer">x.comで試す</a>
+        <button class="button button--ghost" type="button" data-share-text="${encodedText}">端末の共有を使う</button>
+      </div>
+      <div class="quiz-native-x">
+        <a class="twitter-share-button" href="${shareUrl}" data-size="large">Post</a>
       </div>
     </div>
     <label class="quiz-share-text">
       <span>Copy post text</span>
-      <textarea id="quizShareText" readonly>${text}</textarea>
+      <textarea id="quizShareText" readonly>${copyText}</textarea>
     </label>
     <div class="quiz-share-row">
       <button class="button button--ghost" type="button" data-copy-text="${encodedText}">Copy text</button>
@@ -853,6 +863,8 @@ function showQuizResult() {
     </details>
     <p class="quiz-copy-note" id="quizCopyNote" aria-live="polite"></p>
   `;
+
+  window.twttr?.widgets?.load?.(quizResult);
 }
 
 function restartQuiz() {
@@ -884,10 +896,19 @@ if (quizCard) {
   quizRestart.addEventListener("click", restartQuiz);
 
   quizResult.addEventListener("click", async (event) => {
+    const openButton = event.target.closest("[data-open-x]");
     const shareButton = event.target.closest("[data-share-text]");
     const copyButton = event.target.closest("[data-copy-text]");
     const note = document.querySelector("#quizCopyNote");
     const textArea = document.querySelector("#quizShareText");
+    if (openButton) {
+      const popup = window.open(openButton.dataset.openX, "_blank", "noopener,noreferrer,width=720,height=640");
+      if (!popup) {
+        window.location.href = openButton.dataset.openX;
+      }
+      return;
+    }
+
     const encoded = shareButton?.dataset.shareText || copyButton?.dataset.copyText;
     if (!encoded) return;
 

@@ -593,6 +593,11 @@ main {
   margin-bottom: 14px;
 }
 
+.quiz-native-x {
+  min-height: 28px;
+  margin-top: 14px;
+}
+
 .quiz-breakdown {
   margin: 24px 0;
 }
