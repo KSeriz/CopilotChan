@@ -755,7 +755,7 @@ function showQuizResult() {
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
   const text = `Copilot進化クイズで ${score}/${quizQuestions.length} 点でした。ランク: ${rank}。補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦: ${pageUrl} #CopilotChan #GitHubCopilot`;
-  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
   const missed = quizQuestions.map((item, index) => (
     `<div>${quizAnswers[index] ? "OK" : "Review"}: ${item.question}</div>`
   )).join("");
@@ -769,7 +769,12 @@ function showQuizResult() {
     <h3>${score}/${quizQuestions.length}</h3>
     <p>${rank}。Copilot ChatやAgent Modeの更新をどれだけ追えているかのスコアです。</p>
     <div class="quiz-breakdown">${missed}</div>
-    <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Post result to X</a>
+    <div class="quiz-share-row">
+      <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Post result to X</a>
+      <button class="button button--ghost" type="button" data-share-text="${encodeURIComponent(text)}">Share</button>
+      <button class="button button--ghost" type="button" data-copy-text="${encodeURIComponent(text)}">Copy text</button>
+    </div>
+    <p class="quiz-copy-note" id="quizCopyNote" aria-live="polite"></p>
   `;
 }
 
@@ -798,6 +803,35 @@ if (quizCard) {
   });
 
   quizRestart.addEventListener("click", restartQuiz);
+
+  quizResult.addEventListener("click", async (event) => {
+    const shareButton = event.target.closest("[data-share-text]");
+    const copyButton = event.target.closest("[data-copy-text]");
+    const note = document.querySelector("#quizCopyNote");
+    const encoded = shareButton?.dataset.shareText || copyButton?.dataset.copyText;
+    if (!encoded) return;
+
+    const text = decodeURIComponent(encoded);
+    if (shareButton && navigator.share) {
+      try {
+        await navigator.share({
+          title: "Copilot Evolution Quiz",
+          text,
+          url: "https://kseriz.github.io/CopilotChan/"
+        });
+        return;
+      } catch (error) {
+        if (error.name === "AbortError") return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      note.textContent = shareButton ? "共有が使えない環境なので投稿文をコピーしました。" : "投稿文をコピーしました。";
+    } catch {
+      note.textContent = "コピーできませんでした。Post result to Xを開いて手動で投稿してください。";
+    }
+  });
 }
 
 renderTimeline();
