@@ -710,10 +710,39 @@ function observeCards() {
 }
 
 function getQuizRank(score) {
-  if (score === quizQuestions.length) return "Copilot release archaeologist";
-  if (score >= 8) return "Agent Mode watcher";
-  if (score >= 5) return "Chat update tracker";
-  return "Copilot timeline explorer";
+  if (score === quizQuestions.length) {
+    return {
+      name: "Master",
+      title: "Copilot Master",
+      message: "補完、Chat、Agent、MCP、Skillsまで完全に追えている人です。"
+    };
+  }
+  if (score >= 8) {
+    return {
+      name: "Expert",
+      title: "Agent Mode Expert",
+      message: "最新のCopilot進化をかなり正確に追えている人です。"
+    };
+  }
+  if (score >= 6) {
+    return {
+      name: "Tracker",
+      title: "Copilot Update Tracker",
+      message: "ChatやAgentの主要アップデートをしっかり押さえています。"
+    };
+  }
+  if (score >= 4) {
+    return {
+      name: "Explorer",
+      title: "AI Dev Tools Explorer",
+      message: "Copilotの流れは見えています。細かいリリースを追うと一気に伸びます。"
+    };
+  }
+  return {
+    name: "Newcomer",
+    title: "Copilot Timeline Newcomer",
+    message: "ここから年表を眺めると、Copilotの変化がかなり見えてきます。"
+  };
 }
 
 function buildQuizOptionOrders() {
@@ -779,7 +808,7 @@ function showQuizResult() {
   const score = quizAnswers.filter(Boolean).length;
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
-  const text = `Copilot進化クイズで ${score}/${quizQuestions.length} 点でした。ランク: ${rank}。補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦: ${pageUrl} #CopilotChan #GitHubCopilot`;
+  const text = `Copilot進化クイズの結果: ${score}/${quizQuestions.length} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦:\n${pageUrl}\n#CopilotChan #GitHubCopilot`;
   const encodedText = encodeURIComponent(text);
   const shareUrl = `https://x.com/intent/post?text=${encodedText}`;
   const fallbackShareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
@@ -793,19 +822,35 @@ function showQuizResult() {
   quizProgress.textContent = "Completed";
   quizScore.textContent = `Score ${score}`;
   quizResult.innerHTML = `
-    <h3>${score}/${quizQuestions.length}</h3>
-    <p>${rank}。Copilot ChatやAgent Modeの更新をどれだけ追えているかのスコアです。</p>
-    <div class="quiz-breakdown">${missed}</div>
+    <div class="quiz-result-hero">
+      <span class="quiz-rank-label">Your rank</span>
+      <h3>${rank.name}</h3>
+      <p class="quiz-rank-title">${rank.title}</p>
+      <div class="quiz-score-ring">
+        <strong>${score}</strong>
+        <span>/ ${quizQuestions.length}</span>
+      </div>
+      <p>${rank.message}</p>
+    </div>
+    <div class="quiz-share-panel">
+      <p class="quiz-share-heading">Share your result</p>
+      <div class="quiz-share-row">
+        <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Share on X</a>
+        <a class="quiz-share quiz-share--ghost" href="${fallbackShareUrl}" target="_blank" rel="noreferrer">Alternate X link</a>
+        <button class="button button--ghost" type="button" data-share-text="${encodedText}">System share</button>
+      </div>
+    </div>
     <label class="quiz-share-text">
-      <span>Post text</span>
+      <span>Copy post text</span>
       <textarea id="quizShareText" readonly>${text}</textarea>
     </label>
     <div class="quiz-share-row">
-      <a class="quiz-share" href="${shareUrl}" target="_blank" rel="noreferrer">Open X compose</a>
-      <a class="quiz-share quiz-share--ghost" href="${fallbackShareUrl}" target="_blank" rel="noreferrer">Try alternate X link</a>
-      <button class="button button--ghost" type="button" data-share-text="${encodedText}">Share</button>
       <button class="button button--ghost" type="button" data-copy-text="${encodedText}">Copy text</button>
     </div>
+    <details class="quiz-breakdown">
+      <summary>回答内訳を見る</summary>
+      <div class="quiz-breakdown-list">${missed}</div>
+    </details>
     <p class="quiz-copy-note" id="quizCopyNote" aria-live="polite"></p>
   `;
 }
