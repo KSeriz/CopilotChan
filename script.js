@@ -524,7 +524,7 @@ const quizNext = document.querySelector("#quizNext");
 const quizRestart = document.querySelector("#quizRestart");
 const quizResult = document.querySelector("#quizResult");
 
-const quizQuestions = [
+const quizPool = [
   {
     question: "2026年5月、GitHub WebのCopilot Chatは何が大きく変わった？",
     options: [
@@ -634,10 +634,133 @@ const quizQuestions = [
     ],
     answer: 0,
     explanation: "Copilot ChatはGitHub上の会話からリポジトリ作業へ進める入口として強化されました。"
+  },
+  {
+    question: "GitHub Copilotが最初に技術プレビューとして登場したのはいつ？",
+    options: [
+      "2021年6月",
+      "2020年1月",
+      "2023年12月",
+      "2026年2月"
+    ],
+    answer: 0,
+    explanation: "GitHub Copilotは2021年6月にtechnical previewとして発表されました。"
+  },
+  {
+    question: "Copilot Xで強く打ち出された方向性は？",
+    options: [
+      "補完だけでなく、Chat、PR、Docs、CLIへ広げる",
+      "GitHub Issuesを廃止する",
+      "AI機能をVisual Studioから外す",
+      "コード候補を完全に手入力へ戻す"
+    ],
+    answer: 0,
+    explanation: "Copilot XはGPT-4時代の開発体験として、Chat、PR、Docs、CLIなどを提示しました。"
+  },
+  {
+    question: "Copilot Workspaceが目指した体験に最も近いものは？",
+    options: [
+      "Issueや自然言語タスクから調査、計画、実装、PRへ進める",
+      "画像編集だけに特化する",
+      "GitHub Pagesだけを作る",
+      "メール送信を自動化する"
+    ],
+    answer: 0,
+    explanation: "Copilot Workspaceは、ideaからcodeまでをCopilot-nativeに進める開発環境として発表されました。"
+  },
+  {
+    question: "Copilot Autofixが関わる領域は？",
+    options: [
+      "CodeQL code scanning alertsなどの脆弱性修正支援",
+      "GitHubプロフィール画像の生成",
+      "X投稿の自動いいね",
+      "Markdown見出しの色変更だけ"
+    ],
+    answer: 0,
+    explanation: "Copilot AutofixはCodeQL code scanning alertsなどの修正提案に関わるセキュリティ寄りのCopilot機能です。"
+  },
+  {
+    question: "Copilot coding agentの特徴として近いものは？",
+    options: [
+      "Issueなどからタスクを委任し、作業してPRで戻す",
+      "エディタの色テーマだけを変える",
+      "GitHubアカウントを自動削除する",
+      "Xのフォロワー数を増やす"
+    ],
+    answer: 0,
+    explanation: "Copilot coding agentは、非同期にタスクを進め、Pull Requestとして戻す方向のエージェント機能です。"
+  },
+  {
+    question: "Copilot CLIの一般提供で強調された使い方は？",
+    options: [
+      "ターミナル上で計画、編集、検証、複数エージェント、MCPなどを扱う",
+      "GitHubをブラウザで開けなくする",
+      "CSSだけを圧縮する",
+      "画像ファイルをすべて削除する"
+    ],
+    answer: 0,
+    explanation: "Copilot CLIはターミナルネイティブな開発エージェントとして、Plan modeやAutopilot、MCPなどが整理されました。"
+  },
+  {
+    question: "Copilot SDK public previewの意味として近いものは？",
+    options: [
+      "Copilotのagentic capabilitiesを外部アプリやワークフローへ組み込める",
+      "CopilotをWeb検索専用にする",
+      "Visual Studioだけでしか使えなくする",
+      "GitHubリポジトリをPDF化する"
+    ],
+    answer: 0,
+    explanation: "Copilot SDKはNode.js/TypeScript、Python、Go、.NET、JavaなどからCopilot能力を組み込む方向の発表です。"
+  },
+  {
+    question: "Visual StudioのTool Callingで狙われた改善は？",
+    options: [
+      "Copilotが必要なコードやツールを自分で探し、文脈取得を助ける",
+      "コンパイラを完全に削除する",
+      "プロジェクト名を毎回ランダムに変える",
+      "Chatを日本語禁止にする"
+    ],
+    answer: 0,
+    explanation: "Tool Callingは、Copilotが回答に必要な情報やツールを選びやすくするための更新でした。"
+  },
+  {
+    question: "MCPがCopilot Agent Modeにとって重要な理由は？",
+    options: [
+      "外部ツール、社内システム、リポジトリ文脈などへ標準的につなげるため",
+      "ブラウザのフォントを変えるため",
+      "すべての回答を短くするため",
+      "画像をJPEGだけにするため"
+    ],
+    answer: 0,
+    explanation: "MCPはエージェントが外部ツールやリソースに接続する標準プロトコルとして扱われています。"
+  },
+  {
+    question: "Copilot Profiler Agentが扱うテーマは？",
+    options: [
+      "CPU、メモリ、実行時挙動などの性能分析",
+      "READMEの絵文字数",
+      "SNS投稿時間の最適化",
+      "GitHub Pagesの背景色だけ"
+    ],
+    answer: 0,
+    explanation: "Profiler Agentはボトルネック特定、ベンチ生成、改善提案など、性能分析に踏み込むエージェントです。"
+  },
+  {
+    question: "Copilot Freeの位置づけとして近いものは？",
+    options: [
+      "無料枠でCopilot補完やChatに触れる入口",
+      "Enterprise専用の閉域機能",
+      "GitHubアカウントなしでのみ使える機能",
+      "CLIを永久に無効化する機能"
+    ],
+    answer: 0,
+    explanation: "Copilot Freeは、GitHubアカウントでCopilotを試せる入口として発表されました。"
   }
 ];
 
+const QUIZ_LENGTH = 10;
 let quizIndex = 0;
+let quizQuestions = pickQuizQuestions();
 let quizAnswers = [];
 let quizSelections = [];
 let quizOptionOrders = buildQuizOptionOrders();
@@ -710,7 +833,7 @@ function observeCards() {
 }
 
 function getQuizRank(score) {
-  if (score === quizQuestions.length) {
+  if (score === QUIZ_LENGTH) {
     return {
       name: "Master",
       title: "Copilot Master",
@@ -746,7 +869,7 @@ function getQuizRank(score) {
 }
 
 function buildQuizOptionOrders() {
-  const correctPositions = [2, 0, 3, 1, 2, 1, 3, 0, 2, 1];
+  const correctPositions = rotateArray([2, 0, 3, 1, 2, 1, 3, 0, 2, 1], Math.floor(Math.random() * QUIZ_LENGTH));
 
   return quizQuestions.map((item, questionIndex) => {
     const options = item.options.map((text, originalIndex) => ({ text, originalIndex }));
@@ -763,6 +886,23 @@ function buildQuizOptionOrders() {
 
     return ordered;
   });
+}
+
+function rotateArray(items, offset) {
+  return items.map((_, index) => items[(index + offset) % items.length]);
+}
+
+function shuffle(items) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function pickQuizQuestions() {
+  return shuffle(quizPool).slice(0, QUIZ_LENGTH);
 }
 
 function renderQuiz() {
@@ -808,7 +948,7 @@ function showQuizResult() {
   const score = quizAnswers.filter(Boolean).length;
   const rank = getQuizRank(score);
   const pageUrl = "https://kseriz.github.io/CopilotChan/";
-  const shareText = `Copilot進化クイズの結果: ${score}/${quizQuestions.length} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦`;
+  const shareText = `Copilot進化クイズの結果: ${score}/${QUIZ_LENGTH} 正解\nランク: ${rank.name} - ${rank.title}\n${rank.message}\n\n補完からChat、Agent、MCP、Skillsまで追う年表サイトで挑戦`;
   const copyText = `${shareText}\n${pageUrl}\n#CopilotChan #GitHubCopilot`;
   const encodedText = encodeURIComponent(copyText);
   const webIntentParams = new URLSearchParams({
@@ -834,7 +974,7 @@ function showQuizResult() {
       <p class="quiz-rank-title">${rank.title}</p>
       <div class="quiz-score-ring">
         <strong>${score}</strong>
-        <span>/ ${quizQuestions.length}</span>
+        <span>/ ${QUIZ_LENGTH}</span>
       </div>
       <p>${rank.message}</p>
     </div>
@@ -869,6 +1009,7 @@ function showQuizResult() {
 
 function restartQuiz() {
   quizIndex = 0;
+  quizQuestions = pickQuizQuestions();
   quizAnswers = [];
   quizSelections = [];
   quizOptionOrders = buildQuizOptionOrders();
